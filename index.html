@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simon AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LEFT SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="side-top">
+    <div class="logo">✦ <span>Simon AI</span></div>
+    <button class="new-chat" onclick="newChat()">＋ New chat</button>
+  </div>
+  <div class="side-label">Chats</div>
+  <div id="chat-list" class="chat-list"></div>
+  <div class="side-label">Projects / Gist</div>
+  <div id="project-list" class="chat-list"></div>
+  <button class="side-btn" onclick="openProject()">＋ New Project / Gist</button>
+  <div class="side-bottom">
+    <div class="user-row"><div class="avatar">S</div><div><b>Simon User</b><small>Free Plan</small></div></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <button class="icon-btn" onclick="toggleSidebar()">☰</button>
+    <b>Simon AI <span class="badge">POWER</span></b>
+    <div class="top-actions">
+      <button onclick="downloadChat()">⬇ Download</button>
+      <button onclick="downloadImage()">🖼️ Image</button>
+      <button onclick="toggleSettings()">⚙️ Settings</button>
+    </div>
+  </div>
+
+  <div class="center" id="center">
+    <div id="welcome">
+      <div class="big-logo">✦</div>
+      <h1>What can I help with?</h1>
+      <p>Simon AI — Faster & Smarter than ChatGPT. Stay on topic, build projects.</p>
+      <div class="suggest-grid">
+        <button onclick="quickAsk('Explain this topic simply for me')"><b>📚 Explain</b><span>Learn any topic fast</span></button>
+        <button onclick="quickAsk('Write a powerful story for me')"><b>✍️ Write</b><span>Story, essay, gist</span></button>
+        <button onclick="quickAsk('Help me build a project and give me its gist')"><b>💡 Project</b><span>Plan + Gist</span></button>
+        <button onclick="quickAsk('Give me code for a beautiful website')"><b>💻 Code</b><span>Full code, no wahala</span></button>
+      </div>
+    </div>
+    <div id="chat-box"></div>
+  </div>
+
+  <!-- INPUT - ALWAYS AT BOTTOM, NOT UNDER -->
+  <div class="input-area">
+    <div class="topic-bar" id="topic-bar">📌 Topic: <b id="current-topic">General</b> <span onclick="changeTopic()">Change</span></div>
+    <div class="input-wrap">
+      <input id="msg" placeholder="Ask Simon AI anything...">
+      <button onclick="sendChat()" class="send">↑</button>
+    </div>
+    <small>Simon AI can make mistakes. Check important info.</small>
+  </div>
+</div>
+
+<!-- RIGHT SETTINGS DASHBOARD -->
+<div class="settings" id="settings">
+  <div class="set-head"><b>⚙️ Settings Dashboard</b><button onclick="toggleSettings()">✕</button></div>
+  <div class="set-body">
+    <label>AI Model</label>
+    <select id="set-model"><option value="llama-3.3-70b-versatile">Llama 3.3 70B - Powerful</option><option value="llama-3.1-8b-instant">Llama 3.1 8B - Fast</option><option value="mixtral-8x7b-32768">Mixtral - Long</option></select>
+    <label>Tone</label>
+    <select id="set-tone"><option>Friendly & Smart</option><option>Professional</option><option>Funny</option><option>Teacher - Simple</option></select>
+    <label>Theme</label>
+    <select id="set-theme" onchange="changeTheme()"><option value="light">Light - Like ChatGPT</option><option value="dark">Dark</option></select>
+    <label>Current Topic</label>
+    <input id="set-topic" placeholder="e.g. Business, School, Coding">
+    <button onclick="saveTopic()">Save Topic</button>
+    <hr>
+    <button onclick="downloadChat()">⬇ Download Chat (.txt)</button>
+    <button onclick="downloadImage()">🖼️ Download as Image</button>
+    <button onclick="clearAll()" class="danger">🗑 Clear Memory & Chats</button>
+    <p class="about">Simon AI by Simon Tech Empire<br>Powered by Groq - Llama 3.3</p>
+  </div>
+</div>
+
+<script src="memory.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
