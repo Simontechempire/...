@@ -3,75 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simon AI</title>
+<title>Simon AI — Fusion</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- LEFT SIDEBAR -->
 <div class="sidebar" id="sidebar">
   <div class="side-top">
-    <div class="logo">✦ <span>Simon AI</span></div>
+    <div class="logo">✦ <span>Simon AI</span> <em>FUSION</em></div>
     <button class="new-chat" onclick="newChat()">＋ New chat</button>
   </div>
-  <div class="side-label">Chats</div>
+  <div class="side-label">✦ Chats</div>
   <div id="chat-list" class="chat-list"></div>
-  <div class="side-label">Projects / Gist</div>
+  <div class="side-label">📁 Projects / Gist</div>
   <div id="project-list" class="chat-list"></div>
   <button class="side-btn" onclick="openProject()">＋ New Project / Gist</button>
+  <div class="fusion-card">
+    <b>🔥 Fusion Mode ON</b>
+    <span>Smarter • Faster • Beautiful</span>
+    <div class="fusion-bar"><i></i></div>
+  </div>
   <div class="side-bottom">
-    <div class="user-row"><div class="avatar">S</div><div><b>Simon User</b><small>Free Plan</small></div></div>
+    <div class="user-row"><div class="avatar">S</div><div><b>Simon User</b><small>Fusion Free Plan</small></div></div>
   </div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
   <div class="topbar">
     <button class="icon-btn" onclick="toggleSidebar()">☰</button>
-    <b>Simon AI <span class="badge">POWER</span></b>
+    <b class="top-title">Simon AI <span class="badge">FUSION ✨</span></b>
     <div class="top-actions">
       <button onclick="downloadChat()">⬇ Download</button>
       <button onclick="downloadImage()">🖼️ Image</button>
-      <button onclick="toggleSettings()">⚙️ Settings</button>
+      <button class="set-btn" onclick="toggleSettings()">⚙️ Settings</button>
     </div>
   </div>
 
   <div class="center" id="center">
     <div id="welcome">
-      <div class="big-logo">✦</div>
-      <h1>What can I help with?</h1>
-      <p>Simon AI — Faster & Smarter than ChatGPT. Stay on topic, build projects.</p>
+      <div class="big-logo"><span>✦</span></div>
+      <h1>What can I <i>help</i> with?</h1>
+      <p>Simon AI Fusion — Many colors, one mind. Faster & Smarter than ChatGPT.</p>
       <div class="suggest-grid">
-        <button onclick="quickAsk('Explain this topic simply for me')"><b>📚 Explain</b><span>Learn any topic fast</span></button>
-        <button onclick="quickAsk('Write a powerful story for me')"><b>✍️ Write</b><span>Story, essay, gist</span></button>
-        <button onclick="quickAsk('Help me build a project and give me its gist')"><b>💡 Project</b><span>Plan + Gist</span></button>
-        <button onclick="quickAsk('Give me code for a beautiful website')"><b>💻 Code</b><span>Full code, no wahala</span></button>
+        <button class="c1" onclick="quickAsk('Explain this topic simply for me')"><b>📚 Explain</b><span>Learn any topic fast</span></button>
+        <button class="c2" onclick="quickAsk('Write a powerful story for me')"><b>✍️ Write</b><span>Story, essay, gist</span></button>
+        <button class="c3" onclick="quickAsk('Help me build a project and give me its gist')"><b>💡 Project</b><span>Plan + Gist</span></button>
+        <button class="c4" onclick="quickAsk('Give me code for a beautiful website')"><b>💻 Code</b><span>Full code, no wahala</span></button>
       </div>
     </div>
     <div id="chat-box"></div>
   </div>
 
-  <!-- INPUT - ALWAYS AT BOTTOM, NOT UNDER -->
   <div class="input-area">
-    <div class="topic-bar" id="topic-bar">📌 Topic: <b id="current-topic">General</b> <span onclick="changeTopic()">Change</span></div>
+    <div class="topic-bar">📌 Topic: <b id="current-topic">General</b> <span onclick="changeTopic()">Change</span></div>
     <div class="input-wrap">
-      <input id="msg" placeholder="Ask Simon AI anything...">
+      <input id="msg" placeholder="Ask Simon AI Fusion anything...">
       <button onclick="sendChat()" class="send">↑</button>
     </div>
-    <small>Simon AI can make mistakes. Check important info.</small>
+    <small>Simon AI Fusion can make mistakes. Check important info.</small>
   </div>
 </div>
 
-<!-- RIGHT SETTINGS DASHBOARD -->
 <div class="settings" id="settings">
-  <div class="set-head"><b>⚙️ Settings Dashboard</b><button onclick="toggleSettings()">✕</button></div>
+  <div class="set-head"><b>⚙️ Fusion Settings</b><button onclick="closeSettings()">✕</button></div>
   <div class="set-body">
+    <label>🎨 Fusion Theme</label>
+    <div class="theme-row">
+      <button class="theme-dot t1" onclick="setFusion('fusion')">Fusion</button>
+      <button class="theme-dot t2" onclick="setFusion('sunset')">Sunset</button>
+      <button class="theme-dot t3" onclick="setFusion('ocean')">Ocean</button>
+      <button class="theme-dot t4" onclick="setFusion('dark')">Dark</button>
+    </div>
     <label>AI Model</label>
     <select id="set-model"><option value="llama-3.3-70b-versatile">Llama 3.3 70B - Powerful</option><option value="llama-3.1-8b-instant">Llama 3.1 8B - Fast</option><option value="mixtral-8x7b-32768">Mixtral - Long</option></select>
     <label>Tone</label>
     <select id="set-tone"><option>Friendly & Smart</option><option>Professional</option><option>Funny</option><option>Teacher - Simple</option></select>
-    <label>Theme</label>
-    <select id="set-theme" onchange="changeTheme()"><option value="light">Light - Like ChatGPT</option><option value="dark">Dark</option></select>
     <label>Current Topic</label>
     <input id="set-topic" placeholder="e.g. Business, School, Coding">
     <button onclick="saveTopic()">Save Topic</button>
@@ -79,11 +85,11 @@
     <button onclick="downloadChat()">⬇ Download Chat (.txt)</button>
     <button onclick="downloadImage()">🖼️ Download as Image</button>
     <button onclick="clearAll()" class="danger">🗑 Clear Memory & Chats</button>
-    <p class="about">Simon AI by Simon Tech Empire<br>Powered by Groq - Llama 3.3</p>
+    <p class="about">Simon AI Fusion by Simon Tech Empire<br>Powered by Groq - Llama 3.3</p>
   </div>
 </div>
 
 <script src="memory.js"></script>
 <script src="script.js"></script>
 </body>
-</html>
+  </html>
